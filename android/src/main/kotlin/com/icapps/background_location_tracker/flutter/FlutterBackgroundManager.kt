@@ -5,13 +5,11 @@ import android.location.Location
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import com.icapps.background_location_tracker.BackgroundLocationTrackerPlugin
 import com.icapps.background_location_tracker.utils.Logger
 import com.icapps.background_location_tracker.utils.SharedPrefsUtil
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.embedding.engine.loader.FlutterLoader
-import io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.view.FlutterCallbackInformation
@@ -25,8 +23,6 @@ internal object FlutterBackgroundManager {
         Logger.debug("BackgroundManager", "Creating new engine")
 
         val engine = FlutterEngine(ctx)
-        //Backwards compatibility with v1. We register all the user's plugins.
-        BackgroundLocationTrackerPlugin.pluginRegistryCallback?.registerWith(ShimPluginRegistry(engine))
         return engine
     }
 
